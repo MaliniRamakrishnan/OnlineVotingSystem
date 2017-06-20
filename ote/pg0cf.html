@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Home Page Description of Candidates' Forum</title>
+<style type="text/css">
+.mySlides {display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:300px;width:300px;padding:0}
+</style>
+</head>
+<body bgcolor="black" text="blue">
+<div class="w3-content w3-display-container">
+  <img class="mySlides" src="navanith.png">
+  <img class="mySlides" src="swedhaa.jpg">
+  <img class="mySlides" src="akshaya.png">
+  <img class="mySlides" src="sanjay.png">
+  <div class="w3-center w3-display-bottomleft" style="width:100%">
+    <div class="w3-left" onclick="plusDivs(-1)">&#10094;</div>
+    <div class="w3-right" onclick="plusDivs(1)">&#10095;</div>
+    <span class="w3-badge demo w3-border" onclick="currentDiv(1)"></span>
+    <span class="w3-badge demo w3-border" onclick="currentDiv(2)"></span>
+    <span class="w3-badge demo w3-border" onclick="currentDiv(3)"></span>
+	<span class="w3-badge demo w3-border" onclick="currentDiv(4)"></span>
+  </div>
+</div>
+<script type="javascript">
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+    showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1} 
+    if (n < 1) {slideIndex = x.length} ;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none"; 
+    }
+    x[slideIndex-1].style.display = "block"; 
+}
+</script>
+</body>
+</html>

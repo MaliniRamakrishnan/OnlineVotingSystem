@@ -1,0 +1,56 @@
+<?php
+$user = "root"; $pswrd = ""; $db = "ote";
+$con = mysql_connect("localhost",$user,$pswrd,$db);
+if(!$con)
+{
+	die("connection failed:". mysql_error());
+}
+if(!mysql_select_db("ote")){
+	die("Can't select database." . mysql_error());
+}
+$candis="SELECT * FROM `candidates`";
+$candque=mysql_query($candis);
+$i = 1;
+while($row = mysql_fetch_array($candque))
+{
+	$candname[$i] = $row[1]; 
+	$candscore[$i] = $row[2];
+	echo $candname[$i] . $candscore[$i];
+	$i++;
+}
+?>
+
+
+var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+      function drawChart() {
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+       /* var data = google.visualization.arrayToDataTable([
+          ['Candidate name', 'Total Score'],
+          [<?php echo $candname[1]; ?>,<?php echo $candscore[1]; ?>]
+		  [<?php echo $candname[2]; ?>,<?php echo $candscore[2]; ?>],
+		  [<?php echo $candname[3]; ?>,<?php echo $candscore[3]; ?>],
+		  [<?php echo $candname[4]; ?>,<?php echo $candscore[4]; ?>],
+        ]);*/
+		var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+        var options = {
+          title: 'Candidates Win Chart'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
